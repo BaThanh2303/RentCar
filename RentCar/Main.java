@@ -12,7 +12,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         ObservableList<String> list = FXCollections.observableArrayList();
-        list.addAll(ThueXeClt.getStringModel);
         System.out.println(list);
         launch(args);
 

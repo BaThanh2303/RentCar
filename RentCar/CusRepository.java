@@ -1,0 +1,73 @@
+package RentCar;
+
+import database.Connector;
+import javafx.scene.control.Alert;
+
+import java.sql.*;
+import java.util.ArrayList;
+
+public class CusRepository implements SRepository<Customers>{
+    @Override
+    public ArrayList<Customers> getAll() {
+        ArrayList<Customers> ListCustomer = new ArrayList<>();
+        try {
+            Connection conn = Connector.getInstance().getConn();
+            Statement stt = conn.createStatement();
+            String sql = "select * from customers";
+            ResultSet rs = stt.executeQuery(sql);
+
+            while (rs.next()) {
+                int id = rs.getInt("cusid");
+                String cusName = rs.getString("cusname");
+                int cusTel = rs.getInt("custel");
+                String brand = rs.getString("brand");
+                String model = rs.getString("model");
+                Double price = rs.getDouble("price");
+                String bien = rs.getString("bien");
+                Customers cus = new Customers(id,cusName,cusTel,brand,model,bien,price);
+                ListCustomer.add(cus);
+            }
+        }catch (Exception e) {
+            System.out.println("error" + e.getMessage());
+        }
+        return ListCustomer;
+
+    }
+
+    @Override
+    public Boolean create(Customers c) {
+        try {
+            Connection conn = Connector.getInstance().getConn();
+            String sql = "insert into customers(cusname,custel,brand,model,bien,price) values(?,?,?,?,?,?)";
+            PreparedStatement stt = conn.prepareStatement(sql);
+            stt.setString(1,c.getCusName());
+            stt.setInt(2,c.getCusTel());
+            stt.setString(3,c.getBrand());
+            stt.setString(4,c.getModel());
+            stt.setString(5,c.getBien());
+            stt.setDouble(6,c.getPrice());
+            stt.executeUpdate();
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
+        return false;
+    }
+
+
+    @Override
+    public Boolean update(Customers c) {
+        return null;
+    }
+
+    @Override
+    public Boolean delete(Customers customers) {
+        return null;
+    }
+
+    @Override
+    public Customers find(String brand) {
+        return null;
+    }
+}

@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1164.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.ThueXeClt">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="1237.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.ThueXeClt">
    <children>
-      <Label layoutX="652.0" layoutY="29.0" text="Ngày Thuê:" />
-      <TextField id="telcus" layoutX="237.0" layoutY="69.0" prefHeight="31.0" prefWidth="175.0" />
-      <Label layoutX="145.0" layoutY="74.0" text="Điện Thoại:" />
-      <TextField id="namecus" layoutX="237.0" layoutY="24.0" prefHeight="31.0" prefWidth="175.0" />
-      <Label layoutX="141.0" layoutY="28.0" text="Khách Hàng:" />
-      <Label layoutX="433.0" layoutY="74.0" text="Mẫu:" />
-      <Label layoutX="430.0" layoutY="28.0" text="Hãng:" />
-      <ComboBox id="3" fx:id="rentCarModel" layoutX="492.0" layoutY="69.0" prefWidth="150.0" promptText="Choose....." />
-      <ComboBox id="2" fx:id="rentCarBrand" layoutX="492.0" layoutY="24.0" prefWidth="150.0" promptText="Choose....." />
-      <Label layoutX="657.0" layoutY="74.0" text="Ngày Trả:" />
-      <DatePicker layoutX="741.0" layoutY="24.0" prefHeight="31.0" prefWidth="175.0" />
-      <DatePicker layoutX="741.0" layoutY="69.0" prefHeight="31.0" prefWidth="175.0" />
-      <TableView fx:id="tbView" layoutX="148.0" layoutY="135.0" prefHeight="322.0" prefWidth="986.0">
+      <TableView fx:id="tbView" layoutX="189.0" layoutY="135.0" prefHeight="325.0" prefWidth="1028.0" style="-fx-border-radius: 10;">
         <columns>
           <TableColumn fx:id="TCId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="TCBrand" prefWidth="155.0" text="Hãng" />
             <TableColumn fx:id="TCModel" prefWidth="236.0" text="Tên Xe" />
-            <TableColumn fx:id="TCPrice" prefWidth="141.0" text="Giá" />
-            <TableColumn fx:id="TCStatus" prefWidth="154.0" text="Trạng Thái" />
+            <TableColumn fx:id="TCBien" prefWidth="179.0" text="Biển Số" />
+            <TableColumn fx:id="TCPrice" prefWidth="178.0" text="Giá" />
+            <TableColumn fx:id="TCStatus" prefWidth="204.0" text="Trạng Thái" />
         </columns>
       </TableView>
-      <Button layoutX="945.0" layoutY="69.0" mnemonicParsing="false" onAction="#Submit" prefHeight="31.0" prefWidth="122.0" text="Thuê" />
-      <Button layoutX="14.0" layoutY="135.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Home" />
-      <Button layoutX="14.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Thêm Xe" />
-      <Label layoutX="945.0" layoutY="24.0" prefHeight="31.0" prefWidth="47.0" text="Total:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Text layoutX="996.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
+      <Pane prefHeight="476.0" prefWidth="175.0" style="-fx-background-color: #CCCCCC;">
+         <children>
+            <Text layoutX="14.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bá Thành">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân viên" />
+            <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
+            <Button layoutY="197.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
+            <Button layoutY="256.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
+            <Button layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
+         </children>
+      </Pane>
+      <Pane layoutX="188.0" layoutY="4.0" prefHeight="118.0" prefWidth="1028.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 5;">
+         <children>
+            <Label layoutX="537.0" layoutY="21.0" text="Ngày Thuê:" />
+            <TextField id="telcus" layoutX="130.0" layoutY="57.0" prefHeight="31.0" prefWidth="175.0" />
+            <Label layoutX="23.0" layoutY="62.0" text="Điện Thoại:" />
+            <TextField id="namecus" layoutX="130.0" layoutY="16.0" prefHeight="31.0" prefWidth="175.0" />
+            <Label layoutX="18.0" layoutY="21.0" text="Khách Hàng:" />
+            <Label layoutX="322.0" layoutY="62.0" text="Mẫu:" />
+            <Label layoutX="319.0" layoutY="21.0" text="Hãng:" />
+            <ComboBox id="3" fx:id="rentCarModel" layoutX="375.0" layoutY="57.0" prefWidth="150.0" promptText="Choose....." />
+            <ComboBox id="2" fx:id="rentCarBrand" layoutX="375.0" layoutY="16.0" prefWidth="150.0" promptText="Choose....." />
+            <Label layoutX="543.0" layoutY="62.0" text="Ngày Trả:" />
+            <DatePicker fx:id="dateReturn" id="ngaytra" layoutX="621.0" layoutY="57.0" prefHeight="31.0" prefWidth="175.0" />
+            <DatePicker fx:id="dateRented" id="ngaythue" layoutX="621.0" layoutY="16.0" prefHeight="31.0" prefWidth="175.0" />
+            <Button layoutX="813.0" layoutY="57.0" mnemonicParsing="false" onAction="#Submit" prefHeight="31.0" prefWidth="122.0" text="Thuê" />
+            <Label layoutX="813.0" layoutY="16.0" prefHeight="31.0" prefWidth="47.0" text="Total:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </Pane>

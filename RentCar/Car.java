@@ -6,14 +6,16 @@ public class Car {
     private int Carid;
     private String Brand;
     private String Model;
+    private String Bien;
     private double Price;
     private String Status;
     private Date Date;
 
-    public Car(int carid, String brand, String model, double price, String status, java.sql.Date date) {
+    public Car(int carid, String brand, String model, String bien, double price, String status, java.sql.Date date) {
         Carid = carid;
         Brand = brand;
         Model = model;
+        Bien = bien;
         Price = price;
         Status = status;
         Date = date;
@@ -41,6 +43,14 @@ public class Car {
 
     public void setModel(String model) {
         Model = model;
+    }
+
+    public String getBien() {
+        return Bien;
+    }
+
+    public void setBien(String bien) {
+        Bien = bien;
     }
 
     public double getPrice() {
