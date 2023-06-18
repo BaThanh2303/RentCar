@@ -9,25 +9,25 @@ public class Car {
     private String Bien;
     private double Price;
     private String Status;
-    private Date Date;
 
-    public Car(String brand, String model, String bien, double price, String status, java.sql.Date date) {
+
+    public Car(String brand, String model, String bien, double price, String status) {
         Brand = brand;
         Model = model;
         Bien = bien;
         Price = price;
         Status = status;
-        Date = date;
+
     }
 
-    public Car(int carid, String brand, String model, String bien, double price, String status, java.sql.Date date) {
+    public Car(int carid, String brand, String model, String bien, double price, String status) {
         Carid = carid;
         Brand = brand;
         Model = model;
         Bien = bien;
         Price = price;
         Status = status;
-        Date = date;
+
     }
 
     public int getCarid() {
@@ -78,13 +78,7 @@ public class Car {
         Status = status;
     }
 
-    public java.sql.Date getDate() {
-        return Date;
-    }
 
-    public void setDate(java.sql.Date date) {
-        Date = date;
-    }
     public String toString(){
         return Carid+"-"+Brand+"-"+Model+"-"+Price+"-"+Status;
     }

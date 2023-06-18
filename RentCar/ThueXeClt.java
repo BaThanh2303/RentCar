@@ -82,7 +82,7 @@ public class ThueXeClt implements Initializable {
                 throw  new Exception("Đã Có Lỗi Xảy Ra!");
             }
         }catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
             alert.show();
         }

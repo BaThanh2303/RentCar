@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1235.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.ThemXeClt">
+   <children>
+      <Pane prefHeight="476.0" prefWidth="175.0" style="-fx-background-color: #CCCCCC;">
+         <children>
+            <Text layoutX="14.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bá Thành">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân viên" />
+            <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
+            <Button layoutY="197.0" mnemonicParsing="false" onAction="#Home" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
+            <Button layoutY="256.0" mnemonicParsing="false" onAction="#ThueXe" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
+            <Button layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
+         </children>
+      </Pane>
+      <TableView fx:id="tbView" layoutX="193.0" layoutY="210.0" prefHeight="251.0" prefWidth="1028.0" style="-fx-border-radius: 10;">
+         <columns>
+            <TableColumn fx:id="TCId" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="TCBrand" prefWidth="155.0" text="Hãng" />
+            <TableColumn fx:id="TCModel" prefWidth="237.0" text="Tên Xe" />
+            <TableColumn fx:id="TCBien" prefWidth="178.0" text="Biển Số" />
+            <TableColumn fx:id="TCPrice" prefWidth="178.0" text="Giá" />
+            <TableColumn fx:id="TCStatus" prefWidth="204.0" text="Trạng Thái" />
+         </columns>
+      </TableView>
+      <Pane layoutX="193.0" layoutY="14.0" prefHeight="189.0" prefWidth="1028.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 5;">
+         <children>
+            <Text layoutX="13.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hãng:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <TextField id="brand" fx:id="Brand" layoutX="84.0" layoutY="65.0" />
+            <TextField id="model" fx:id="Model" layoutX="84.0" layoutY="113.0" />
+            <Text layoutX="6.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên Xe: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField id="bien" fx:id="Bien" layoutX="371.0" layoutY="24.0" />
+            <Text layoutX="285.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biển Số: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="282.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá Thuê:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField id="price" fx:id="Price" layoutX="371.0" layoutY="65.0" />
+            <ComboBox fx:id="Status" layoutX="407.0" layoutY="114.0" prefWidth="150.0" />
+            <Text layoutX="282.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trạng Thái:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="576.0" layoutY="21.0" mnemonicParsing="false" onAction="#Submit" prefHeight="45.0" prefWidth="119.0" text="Xác Nhận" />
+            <Button layoutX="876.0" layoutY="21.0" mnemonicParsing="false" onAction="#Update" prefHeight="45.0" prefWidth="119.0" text="Cập Nhật" />
+            <Button layoutX="876.0" layoutY="93.0" mnemonicParsing="false" onAction="#Delete" prefHeight="45.0" prefWidth="119.0" text="Xóa" />
+            <Button layoutX="733.0" layoutY="21.0" mnemonicParsing="false" onAction="#Select" prefHeight="45.0" prefWidth="119.0" text="Chọn" />
+            <Text layoutX="28.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <TextField id="brand" fx:id="Id" layoutX="84.0" layoutY="24.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

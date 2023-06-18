@@ -76,8 +76,7 @@ public class CarRepository implements SRepository<Car>{
                 Double price = rs.getDouble("price");
                 String bien = rs.getString("bien");
                 String status = rs.getString("status");
-                Date date = rs.getDate("date");
-                Car car = new Car(id,brand,model,bien,price,status,date);
+                Car car = new Car(id,brand,model,bien,price,status);
                 cars.add(car);
             }
         }catch (Exception e) {
@@ -136,6 +135,7 @@ public class CarRepository implements SRepository<Car>{
             stt.setDouble(4,c.getPrice());
             stt.setString(5,c.getStatus());
             stt.executeUpdate();
+            return true;
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -148,7 +148,7 @@ public class CarRepository implements SRepository<Car>{
     public Boolean update(Car c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "update car set brand=?,model=?,bien=?,price=? where id=?";
+            String sql = "update car set brand=?,model=?,bien=?,price=? where carid=?";
             PreparedStatement stt = conn.prepareStatement(sql);
             stt.setInt(1,c.getCarid());
             stt.setString(2,c.getBrand());
@@ -167,7 +167,7 @@ public class CarRepository implements SRepository<Car>{
     public Boolean delete(Car c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "delete from car where id=?";
+            String sql = "delete from car where carid=?";
             PreparedStatement stt = conn.prepareStatement(sql);
             stt.setInt(1,c.getCarid());
             stt.executeUpdate();
@@ -196,8 +196,8 @@ public class CarRepository implements SRepository<Car>{
                 String bien = rs.getString("bien");
                 Double price = rs.getDouble("price");
                 String status = rs.getString("status");
-                Date date = rs.getDate("date");
-                Car car = new Car(carid,brandcar,model,bien,price,status,date);
+
+                Car car = new Car(carid,brandcar,model,bien,price,status);
                 return car;
             }
         }catch (Exception e){

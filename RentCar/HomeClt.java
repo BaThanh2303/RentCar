@@ -39,7 +39,6 @@ public class HomeClt implements Initializable {
         try {
             ObservableList<Customers> listCus = FXCollections.observableArrayList();
             listCus.addAll(CusRepository.getInstance().getAll());
-            System.out.println(listCus);
             tbViewHome.setItems(listCus);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -50,6 +49,11 @@ public class HomeClt implements Initializable {
 
     public void ThueXe(ActionEvent actionEvent) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("thuexe.fxml"));
+        Main.mainStage.setScene(new Scene(root, 1235,475));
+    }
+
+    public void ThemXe(ActionEvent actionEvent) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("themxe.fxml"));
         Main.mainStage.setScene(new Scene(root, 1235,475));
     }
 }
