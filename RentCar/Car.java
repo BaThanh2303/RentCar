@@ -11,6 +11,15 @@ public class Car {
     private String Status;
     private Date Date;
 
+    public Car(String brand, String model, String bien, double price, String status, java.sql.Date date) {
+        Brand = brand;
+        Model = model;
+        Bien = bien;
+        Price = price;
+        Status = status;
+        Date = date;
+    }
+
     public Car(int carid, String brand, String model, String bien, double price, String status, java.sql.Date date) {
         Carid = carid;
         Brand = brand;

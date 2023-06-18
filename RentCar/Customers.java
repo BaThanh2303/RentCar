@@ -1,22 +1,44 @@
 package RentCar;
 
+import java.sql.Date;
+
 public class Customers {
     private int CusId;
     private String CusName;
-    private int CusTel;
+    private String CusTel;
     private String Brand;
     private String Model;
     private String Bien;
+    private Date DateReturned;
     private Double Price;
 
-    public Customers(int cusId, String cusName, int cusTel, String brand, String model, String bien, Double price) {
+    public Customers(int cusId, String cusName, String cusTel, String brand, String model, String bien, Date dateReturned, Double price) {
         CusId = cusId;
         CusName = cusName;
         CusTel = cusTel;
         Brand = brand;
         Model = model;
         Bien = bien;
+        DateReturned = dateReturned;
         Price = price;
+    }
+
+    public Customers(String cusName, String cusTel, String brand, String model, String bien, Date dateReturned, Double price) {
+        CusName = cusName;
+        CusTel = cusTel;
+        Brand = brand;
+        Model = model;
+        Bien = bien;
+        DateReturned = dateReturned;
+        Price = price;
+    }
+
+    public Date getDateReturned() {
+        return DateReturned;
+    }
+
+    public void setDateReturned(Date dateReturned) {
+        DateReturned = dateReturned;
     }
 
     public int getCusId() {
@@ -35,11 +57,11 @@ public class Customers {
         CusName = cusName;
     }
 
-    public int getCusTel() {
+    public String getCusTel() {
         return CusTel;
     }
 
-    public void setCusTel(int cusTel) {
+    public void setCusTel(String cusTel) {
         CusTel = cusTel;
     }
 

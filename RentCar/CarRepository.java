@@ -28,7 +28,7 @@ public class CarRepository implements SRepository<Car>{
         try {
             Connection conn = Connector.getInstance().getConn();
             Statement stt = conn.createStatement();
-            String sql = "select * from car where brand = '"+getModel+"'";
+            String sql = "select * from car where brand = ";
             ResultSet rs = stt.executeQuery(sql);
             while (rs.next()){
                 String model  = rs.getString("model");
@@ -116,7 +116,7 @@ public class CarRepository implements SRepository<Car>{
         countRentDate();
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "select price, model from car where model = '"+getModel+"'";
+            String sql = "select price, model from car where model = ";
             PreparedStatement stt = conn.prepareStatement(sql);
         }catch (Exception e){
 

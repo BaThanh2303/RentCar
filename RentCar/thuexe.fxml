@@ -27,12 +27,12 @@
             </Text>
             <Text layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân viên" />
             <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
-            <Button layoutY="197.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
+            <Button onAction="#Home" layoutY="197.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
             <Button layoutY="256.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
             <Button layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
          </children>
       </Pane>
-      <Pane layoutX="188.0" layoutY="4.0" prefHeight="118.0" prefWidth="1028.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 5;">
+      <Pane layoutX="189.0" layoutY="14.0" prefHeight="118.0" prefWidth="1028.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 5;">
          <children>
             <Label layoutX="537.0" layoutY="21.0" text="Ngày Thuê:" />
             <TextField id="telcus" layoutX="130.0" layoutY="57.0" prefHeight="31.0" prefWidth="175.0" />
@@ -44,17 +44,12 @@
             <ComboBox id="3" fx:id="rentCarModel" layoutX="375.0" layoutY="57.0" prefWidth="150.0" promptText="Choose....." />
             <ComboBox id="2" fx:id="rentCarBrand" layoutX="375.0" layoutY="16.0" prefWidth="150.0" promptText="Choose....." />
             <Label layoutX="543.0" layoutY="62.0" text="Ngày Trả:" />
-            <DatePicker fx:id="dateReturn" id="ngaytra" layoutX="621.0" layoutY="57.0" prefHeight="31.0" prefWidth="175.0" />
-            <DatePicker fx:id="dateRented" id="ngaythue" layoutX="621.0" layoutY="16.0" prefHeight="31.0" prefWidth="175.0" />
+            <DatePicker id="ngaytra" fx:id="dateReturn" layoutX="621.0" layoutY="57.0" prefHeight="31.0" prefWidth="175.0" />
+            <DatePicker id="ngaythue" fx:id="dateRented" layoutX="621.0" layoutY="16.0" prefHeight="31.0" prefWidth="175.0" />
             <Button layoutX="813.0" layoutY="57.0" mnemonicParsing="false" onAction="#Submit" prefHeight="31.0" prefWidth="122.0" text="Thuê" />
-            <Label layoutX="813.0" layoutY="16.0" prefHeight="31.0" prefWidth="47.0" text="Total:">
+            <Text fx:id="total" layoutX="813.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:">
                <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.0">
-               <font>
-                  <Font size="22.0" />
+                  <Font size="21.0" />
                </font>
             </Text>
          </children>
