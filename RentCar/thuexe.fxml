@@ -29,7 +29,7 @@
             <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
             <Button onAction="#Home" layoutY="197.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
             <Button layoutY="256.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
-            <Button layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
+            <Button onAction="#ThemXe" layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
          </children>
       </Pane>
       <Pane layoutX="189.0" layoutY="14.0" prefHeight="118.0" prefWidth="1028.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 5;">

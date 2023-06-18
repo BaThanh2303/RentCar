@@ -148,13 +148,14 @@ public class CarRepository implements SRepository<Car>{
     public Boolean update(Car c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "update car set brand=?,model=?,bien=?,price=? where carid=?";
+            String sql = "update car set brand=?,model=?,bien=?,price=?,status=? where carid=?";
             PreparedStatement stt = conn.prepareStatement(sql);
-            stt.setInt(1,c.getCarid());
-            stt.setString(2,c.getBrand());
-            stt.setString(3,c.getModel());
-            stt.setString(4,c.getBien());
-            stt.setDouble(5,c.getPrice());
+            stt.setString(1,c.getBrand());
+            stt.setString(2,c.getModel());
+            stt.setString(3,c.getBien());
+            stt.setDouble(4,c.getPrice());
+            stt.setString(5,c.getStatus());
+            stt.setInt(6,c.getCarid());
             stt.executeUpdate();
             return true;
         }catch (Exception e){

@@ -92,4 +92,10 @@ public class ThueXeClt implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("homev2.fxml"));
         Main.mainStage.setScene(new Scene(root, 1280,475));
     }
+
+
+    public void ThemXe(ActionEvent actionEvent)throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("themxe.fxml"));
+        Main.mainStage.setScene(new Scene(root, 1280,475));
+    }
 }

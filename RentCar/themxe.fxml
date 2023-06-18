@@ -19,7 +19,7 @@
             <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
             <Button layoutY="197.0" mnemonicParsing="false" onAction="#Home" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
             <Button layoutY="256.0" mnemonicParsing="false" onAction="#ThueXe" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
-            <Button layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
+            <Button onAction="#ThemXe" layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
          </children>
       </Pane>
       <TableView fx:id="tbView" layoutX="193.0" layoutY="210.0" prefHeight="251.0" prefWidth="1028.0" style="-fx-border-radius: 10;">

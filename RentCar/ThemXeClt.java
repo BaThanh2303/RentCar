@@ -62,7 +62,7 @@ public class ThemXeClt implements Initializable {
         Main.mainStage.setScene(new Scene(root, 1280,475));
     }
 
-    public void Submit(ActionEvent actionEvent) {
+    public void Submit(ActionEvent actionEvent) throws Exception {
         try {
             String brand = Brand.getText();
             String model = Model.getText();
@@ -79,10 +79,10 @@ public class ThemXeClt implements Initializable {
             alert.setContentText(e.getMessage());
             alert.show();
         }
-        tbView.refresh();
+       ThemXe(null);
     }
 
-    public void Delete(ActionEvent actionEvent) {
+    public void Delete(ActionEvent actionEvent) throws Exception {
         try {
             Car car = tbView.getSelectionModel().getSelectedItem();
             if (CarRepository.getInstance().delete(car)) {
@@ -94,10 +94,10 @@ public class ThemXeClt implements Initializable {
             alert.setContentText(e.getMessage());
             alert.show();
         }
-        tbView.refresh();
+        ThemXe(null);
     }
 
-    public void Update(ActionEvent actionEvent) {
+    public void Update(ActionEvent actionEvent) throws Exception {
         try {
                 int id = Integer.parseInt(Id.getText());
                 String brand = Brand.getText();
@@ -115,7 +115,7 @@ public class ThemXeClt implements Initializable {
             alert.setContentText(e.getMessage());
             alert.show();
         }
-        tbView.refresh();
+        ThemXe(null);
     }
 
     public void Select(ActionEvent actionEvent) {
@@ -127,6 +127,11 @@ public class ThemXeClt implements Initializable {
             Bien.setText(carsl.getBien());
             Price.setText(String.valueOf(carsl.getPrice()));
         }
+    }
+
+    public void ThemXe(ActionEvent actionEvent) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("themxe.fxml"));
+        Main.mainStage.setScene(new Scene(root, 1280,475));
     }
 }
 
