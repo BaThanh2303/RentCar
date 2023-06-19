@@ -7,16 +7,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="366.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="RentCar.SigninClt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="366.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="122.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
          <font>
             <Font size="37.0" />
          </font>
       </Text>
-      <TextField layoutX="85.0" layoutY="210.0" promptText="User" style="-fx-background-radius: 10;" />
-      <PasswordField layoutX="85.0" layoutY="259.0" promptText="Password" style="-fx-background-radius: 10;" />
-      <Button layoutX="85.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: #555555;" text="Log In" textFill="WHITE" />
+      <TextField fx:id="username" layoutX="85.0" layoutY="210.0" promptText="User" style="-fx-background-radius: 10;" />
+      <PasswordField fx:id="password" layoutX="85.0" layoutY="259.0" promptText="Password" style="-fx-background-radius: 10;" />
+      <Button onAction="#Submit" layoutX="85.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: #555555;" text="Log In" textFill="WHITE" />
       <FontAwesomeIcon glyphName="USER" layoutX="154.0" layoutY="122.0" size="5em" />
    </children>
 </Pane>

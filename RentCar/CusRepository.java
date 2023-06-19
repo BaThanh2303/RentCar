@@ -49,19 +49,18 @@ public class CusRepository implements SRepository<Customers>{
     public Boolean create(Customers c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "insert into customers(cusname,custel,brand,model,bien,price) values(?,?,?,?,?,?)";
+            String sql = "insert into customers(cusname,custel,brand,model,bien,ngaytra,price) values(?,?,?,?,?,?,?)";
             PreparedStatement stt = conn.prepareStatement(sql);
             stt.setString(1,c.getCusName());
             stt.setString(2,c.getCusTel());
             stt.setString(3,c.getBrand());
             stt.setString(4,c.getModel());
             stt.setString(5,c.getBien());
-            stt.setDouble(6,c.getPrice());
+            stt.setString(6,c.getBien());
+            stt.setDouble(7,c.getPrice());
             stt.executeUpdate();
         }catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
+            System.out.println("error" + e.getMessage());
         }
         return false;
     }

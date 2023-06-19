@@ -20,7 +20,22 @@ public class CarRepository implements SRepository<Car>{
         }
         return instance;
     }
-
+    public static ArrayList<String> getlistBien(){
+        ArrayList<String> ListBien = new ArrayList<>();
+        try {
+            Connection conn = Connector.getInstance().getConn();
+            Statement stt = conn.createStatement();
+            String sql = "select bien, model from car where model = '"+ ModelChoice+"' ";
+            ResultSet rs = stt.executeQuery(sql);
+            while (rs.next()){
+                String Bien  = rs.getString("bien");
+                ListBien.add(Bien);
+            }
+        }catch (Exception e) {
+            System.out.println("error" + e.getMessage());
+        }
+        return ListBien;
+    }
 
     public static ArrayList<String> getlistModel() {
 
@@ -28,7 +43,7 @@ public class CarRepository implements SRepository<Car>{
         try {
             Connection conn = Connector.getInstance().getConn();
             Statement stt = conn.createStatement();
-            String sql = "select * from car where brand = ";
+            String sql = "select * from car where brand = '"+ThueXeClt.BrandChoice+"' ";
             ResultSet rs = stt.executeQuery(sql);
             while (rs.next()){
                 String model  = rs.getString("model");
@@ -113,14 +128,21 @@ public class CarRepository implements SRepository<Car>{
 
     public static Double totalPrice() {
         countRentDate();
+        double totalprice = 0;
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "select price, model from car where model = ";
+            String sql = "select price, model from car where model = '"+ ModelChoice+"' ";
             PreparedStatement stt = conn.prepareStatement(sql);
-        }catch (Exception e){
+            ResultSet rs = stt.executeQuery(sql);
+            double price = 0;
+            while (rs.next()) {
+                price = rs.getDouble("price");
+            }
+            totalprice = (price * countRentDate());
+        } catch (Exception e) {
 
         }
-        return null;
+        return totalprice;
     }
 
     @Override

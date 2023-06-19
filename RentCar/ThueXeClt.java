@@ -19,7 +19,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static RentCar.CarRepository.countRentDate;
+import static RentCar.CarRepository.totalPrice;
+
 public class ThueXeClt implements Initializable {
+    public static String BrandChoice;
+    public static String ModelChoice;
     public Text total;
     public TextField namecus;
     public TextField telcus;
@@ -27,6 +32,7 @@ public class ThueXeClt implements Initializable {
     public DatePicker dateRented;
     public ComboBox rentCarBrand;
     public ComboBox rentCarModel;
+    public ComboBox rentCarBien;
     public TableView<Car> tbView;
     public TableColumn<Car, Integer> TCId;
     public TableColumn<Car, String> TCBrand;
@@ -47,14 +53,10 @@ public class ThueXeClt implements Initializable {
         try{
             ObservableList<Car> list = FXCollections.observableArrayList();
             ObservableList<String> ListBrand = FXCollections.observableArrayList();
-            ObservableList<String> listModel = FXCollections.observableArrayList();
-            listModel.addAll(CarRepository.getInstance().getlistModel());
-            ListBrand.addAll(CarRepository.getInstance().getListBrand());
+            ListBrand.addAll(CarRepository.getListBrand());
+            rentCarBrand.setItems(ListBrand);
             list.addAll(CarRepository.getInstance().getAll());
             tbView.setItems(list);
-            rentCarBrand.setItems(ListBrand);
-            ngayTra = dateReturn.getValue();
-            ngayThue = dateRented.getValue();
 
 
         }catch (Exception e){
@@ -64,8 +66,6 @@ public class ThueXeClt implements Initializable {
         }
     }
 
-
-
     public void Submit(ActionEvent actionEvent) {
         try {
             String cusName = namecus.getText();
@@ -74,17 +74,16 @@ public class ThueXeClt implements Initializable {
             String model = rentCarModel.getSelectionModel().getSelectedItem().toString();
             Double price = Double.parseDouble(total.getText());
             Date date = Date.valueOf(dateReturn.getValue());
-            String bien = TCBien.getText();
+            String bien = rentCarBien.getSelectionModel().getSelectedItem().toString();
             Customers cus = new Customers(cusName,cusTel,brand,model,bien,date,price);
+            System.out.println(cus);
             if (CusRepository.getInstance().create(cus)){
                 throw new Exception("Đã Thêm Khách Thuê Thành Công!!!");
             }else {
                 throw  new Exception("Đã Có Lỗi Xảy Ra!");
             }
         }catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -97,5 +96,32 @@ public class ThueXeClt implements Initializable {
     public void ThemXe(ActionEvent actionEvent)throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("themxe.fxml"));
         Main.mainStage.setScene(new Scene(root, 1280,475));
+    }
+
+    public void brandChange(ActionEvent event) {
+        BrandChoice = rentCarBrand.getSelectionModel().getSelectedItem().toString();
+        ObservableList<String> listModel = FXCollections.observableArrayList();
+        listModel.addAll(CarRepository.getlistModel());
+        rentCarModel.setItems(listModel);
+    }
+
+    public void modelChange(ActionEvent event) {
+        ModelChoice = rentCarModel.getSelectionModel().getSelectedItem().toString();
+        ObservableList<String> listBien = FXCollections.observableArrayList();
+        listBien.addAll(CarRepository.getlistBien());
+        rentCarBien.setItems(listBien);
+    }
+
+    public void dateRt(ActionEvent event) {
+        ngayTra = dateReturn.getValue();
+        countRentDate();
+        total.setText(String.valueOf(totalPrice()));
+        System.out.println(ngayTra);
+        System.out.println(totalPrice());
+    }
+
+    public void dateRent(ActionEvent event) {
+        ngayThue = dateRented.getValue();
+        System.out.println(ngayThue);
     }
 }
