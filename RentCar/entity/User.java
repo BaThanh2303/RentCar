@@ -1,4 +1,4 @@
-package RentCar;
+package RentCar.entity;
 
 public class User {
     public static String username;

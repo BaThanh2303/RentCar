@@ -1,8 +1,6 @@
 package RentCar;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         mainStage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("signin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("controller/fxml/signin.fxml"));
         primaryStage.setScene(new Scene(root, 366, 503));
         primaryStage.show();
     }

@@ -1,4 +1,4 @@
-package RentCar;
+package RentCar.entity;
 
 import java.sql.Date;
 
@@ -6,25 +6,25 @@ public class Car {
     private int Carid;
     private String Brand;
     private String Model;
-    private String Bien;
+    private String License;
     private double Price;
     private String Status;
 
 
-    public Car(String brand, String model, String bien, double price, String status) {
+    public Car(String brand, String model, String license, double price, String status) {
         Brand = brand;
         Model = model;
-        Bien = bien;
+        License = license;
         Price = price;
         Status = status;
 
     }
 
-    public Car(int carid, String brand, String model, String bien, double price, String status) {
+    public Car(int carid, String brand, String model, String license, double price, String status) {
         Carid = carid;
         Brand = brand;
         Model = model;
-        Bien = bien;
+        License = license;
         Price = price;
         Status = status;
 
@@ -54,12 +54,12 @@ public class Car {
         Model = model;
     }
 
-    public String getBien() {
-        return Bien;
+    public String getLicense() {
+        return License;
     }
 
-    public void setBien(String bien) {
-        Bien = bien;
+    public void setLicense(String license) {
+        License = license;
     }
 
     public double getPrice() {
@@ -79,7 +79,4 @@ public class Car {
     }
 
 
-    public String toString(){
-        return Carid+"-"+Brand+"-"+Model+"-"+Price+"-"+Status;
-    }
 }

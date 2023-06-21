@@ -1,5 +1,8 @@
-package RentCar;
+package RentCar.controller;
 
+import RentCar.Main;
+import RentCar.entity.Customers;
+import RentCar.repository.CusRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +26,7 @@ public class HomeClt implements Initializable {
     public TableColumn<Customers, String> CusTel;
     public TableColumn<Customers, String> Brand;
     public TableColumn<Customers, String> Model;
-    public  TableColumn<Customers, String> Bien;
+    public  TableColumn<Customers, String> License;
     public TableColumn<Customers, Date> DateReturned;
     public TableColumn<Customers, Double> Price;
     @Override
@@ -33,7 +36,7 @@ public class HomeClt implements Initializable {
         CusTel.setCellValueFactory(new PropertyValueFactory<>("CusTel"));
         Brand.setCellValueFactory(new PropertyValueFactory<>("Brand"));
         Model.setCellValueFactory(new PropertyValueFactory<>("Model"));
-        Bien.setCellValueFactory(new PropertyValueFactory<>("Bien"));
+        License.setCellValueFactory(new PropertyValueFactory<>("License"));
         DateReturned.setCellValueFactory(new PropertyValueFactory<>("DateReturned"));
         Price.setCellValueFactory(new PropertyValueFactory<>("Price"));
         try {
@@ -47,13 +50,23 @@ public class HomeClt implements Initializable {
         }
     }
 
-    public void ThueXe(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("thuexe.fxml"));
+    public void RentCar(ActionEvent actionEvent) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/rentcar.fxml"));
         Main.mainStage.setScene(new Scene(root, 1235,475));
     }
 
-    public void ThemXe(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("themxe.fxml"));
+    public void NewCar(ActionEvent actionEvent) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/newcar.fxml"));
+        Main.mainStage.setScene(new Scene(root, 1235,475));
+    }
+
+    public void Home(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/homev2.fxml"));
+        Main.mainStage.setScene(new Scene(root, 1235,475));
+    }
+
+    public void SignOut(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/signin.fxml"));
         Main.mainStage.setScene(new Scene(root, 1235,475));
     }
 }

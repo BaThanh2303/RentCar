@@ -1,12 +1,15 @@
-package RentCar;
+package RentCar.repository;
 
+import RentCar.entity.Customers;
 import database.Connector;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CusRepository implements SRepository<Customers>{
+import static RentCar.controller.RentCarClt.LicenceChooce;
+
+public class CusRepository implements SRepository<Customers> {
     private static CusRepository instance;
     private CusRepository(){
 
@@ -33,9 +36,9 @@ public class CusRepository implements SRepository<Customers>{
                 String brand = rs.getString("brand");
                 String model = rs.getString("model");
                 Double price = rs.getDouble("price");
-                Date date = rs.getDate("NgayTra");
-                String bien = rs.getString("bien");
-                Customers cus = new Customers(id,cusName,cusTel,brand,model,bien,date,price);
+                Date date = rs.getDate("returndate");
+                String license = rs.getString("license");
+                Customers cus = new Customers(id,cusName,cusTel,brand,model,license,date,price);
                 ListCustomer.add(cus);
             }
         }catch (Exception e) {
@@ -49,22 +52,22 @@ public class CusRepository implements SRepository<Customers>{
     public Boolean create(Customers c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "insert into customers(cusname,custel,brand,model,bien,ngaytra,price) values(?,?,?,?,?,?,?)";
+            String sql = "insert into customers(cusname,custel,brand,model,license,returndate,price) values(?,?,?,?,?,?,?)";
             PreparedStatement stt = conn.prepareStatement(sql);
             stt.setString(1,c.getCusName());
             stt.setString(2,c.getCusTel());
             stt.setString(3,c.getBrand());
             stt.setString(4,c.getModel());
-            stt.setString(5,c.getBien());
-            stt.setString(6,c.getBien());
+            stt.setString(5,c.getLicense());
+            stt.setDate(6,c.getDateReturned());
             stt.setDouble(7,c.getPrice());
             stt.executeUpdate();
         }catch (Exception e){
             System.out.println("error" + e.getMessage());
+            return false;
         }
-        return false;
+        return true;
     }
-
 
     @Override
     public Boolean update(Customers c) {

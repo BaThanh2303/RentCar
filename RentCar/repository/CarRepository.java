@@ -1,15 +1,17 @@
-package RentCar;
+package RentCar.repository;
 
+import RentCar.entity.Car;
+import RentCar.controller.RentCarClt;
 import database.Connector;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import static RentCar.ThueXeClt.*;
+import static RentCar.controller.RentCarClt.*;
 
 
-public class CarRepository implements SRepository<Car>{
+public class CarRepository implements SRepository<Car> {
     private static CarRepository instance;
     private CarRepository(){
 
@@ -20,21 +22,21 @@ public class CarRepository implements SRepository<Car>{
         }
         return instance;
     }
-    public static ArrayList<String> getlistBien(){
-        ArrayList<String> ListBien = new ArrayList<>();
+    public static ArrayList<String> getlistLicense(){
+        ArrayList<String> ListLicense = new ArrayList<>();
         try {
             Connection conn = Connector.getInstance().getConn();
             Statement stt = conn.createStatement();
-            String sql = "select bien, model from car where model = '"+ ModelChoice+"' ";
+            String sql = "select license, model from car where model = '"+ ModelChooce+"' ";
             ResultSet rs = stt.executeQuery(sql);
             while (rs.next()){
-                String Bien  = rs.getString("bien");
-                ListBien.add(Bien);
+                String license  = rs.getString("license");
+                ListLicense.add(license);
             }
         }catch (Exception e) {
             System.out.println("error" + e.getMessage());
         }
-        return ListBien;
+        return ListLicense;
     }
 
     public static ArrayList<String> getlistModel() {
@@ -43,7 +45,7 @@ public class CarRepository implements SRepository<Car>{
         try {
             Connection conn = Connector.getInstance().getConn();
             Statement stt = conn.createStatement();
-            String sql = "select * from car where brand = '"+ThueXeClt.BrandChoice+"' ";
+            String sql = "select * from car where brand = '"+ RentCarClt.BrandChooce+"' ";
             ResultSet rs = stt.executeQuery(sql);
             while (rs.next()){
                 String model  = rs.getString("model");
@@ -89,9 +91,9 @@ public class CarRepository implements SRepository<Car>{
                 String brand = rs.getString("brand");
                 String model = rs.getString("model");
                 Double price = rs.getDouble("price");
-                String bien = rs.getString("bien");
+                String license = rs.getString("license");
                 String status = rs.getString("status");
-                Car car = new Car(id,brand,model,bien,price,status);
+                Car car = new Car(id,brand,model,license,price,status);
                 cars.add(car);
             }
         }catch (Exception e) {
@@ -105,8 +107,8 @@ public class CarRepository implements SRepository<Car>{
     public static int countRentDate() {
         int date = 0;
         try {
-                if (ngayTra.isAfter(ngayThue)) {
-                    date = ngayTra.compareTo(ngayThue);
+                if (returndate.isAfter(rentdate)) {
+                    date = returndate.compareTo(rentdate);
                     if (date == 0){
                         date++;
                         return date;
@@ -114,8 +116,8 @@ public class CarRepository implements SRepository<Car>{
                     return date;
                 }else {
                     throw new Exception("Ngày Trả Phải Sau Ngày Thuê!!!");
-                }
 
+                }
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -127,11 +129,10 @@ public class CarRepository implements SRepository<Car>{
 
 
     public static Double totalPrice() {
-        countRentDate();
         double totalprice = 0;
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "select price, model from car where model = '"+ ModelChoice+"' ";
+            String sql = "select price, model from car where model = '"+ ModelChooce+"' ";
             PreparedStatement stt = conn.prepareStatement(sql);
             ResultSet rs = stt.executeQuery(sql);
             double price = 0;
@@ -140,7 +141,7 @@ public class CarRepository implements SRepository<Car>{
             }
             totalprice = (price * countRentDate());
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
         return totalprice;
     }
@@ -149,19 +150,17 @@ public class CarRepository implements SRepository<Car>{
     public Boolean create(Car c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "insert into car(brand,model,bien,price,status) values(?,?,?,?,?)";
+            String sql = "insert into car(brand,model,license,price,status) values(?,?,?,?,?)";
             PreparedStatement stt = conn.prepareStatement(sql);
             stt.setString(1,c.getBrand());
             stt.setString(2,c.getModel());
-            stt.setString(3,c.getBien());
+            stt.setString(3,c.getLicense());
             stt.setDouble(4,c.getPrice());
             stt.setString(5,c.getStatus());
             stt.executeUpdate();
             return true;
         }catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -170,11 +169,11 @@ public class CarRepository implements SRepository<Car>{
     public Boolean update(Car c) {
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "update car set brand=?,model=?,bien=?,price=?,status=? where carid=?";
+            String sql = "update car set brand=?,model=?,License=?,price=?,status=? where carid=?";
             PreparedStatement stt = conn.prepareStatement(sql);
             stt.setString(1,c.getBrand());
             stt.setString(2,c.getModel());
-            stt.setString(3,c.getBien());
+            stt.setString(3,c.getLicense());
             stt.setDouble(4,c.getPrice());
             stt.setString(5,c.getStatus());
             stt.setInt(6,c.getCarid());
@@ -216,11 +215,11 @@ public class CarRepository implements SRepository<Car>{
                 int carid = rs.getInt("carid");
                 String brandcar = rs.getString("brand");
                 String model = rs.getString("model");
-                String bien = rs.getString("bien");
+                String license = rs.getString("license");
                 Double price = rs.getDouble("price");
                 String status = rs.getString("status");
 
-                Car car = new Car(carid,brandcar,model,bien,price,status);
+                Car car = new Car(carid,brandcar,model,license,price,status);
                 return car;
             }
         }catch (Exception e){
