@@ -40,6 +40,7 @@ public class main {
     public static Scanner scanner = new Scanner(System.in);
     public static void addCustomer(){
         try {
+            System.out.println();
             System.out.println("Hãy Nhập Thông tin");
             System.out.print("Nhập Tên Khách: ");
             String name = scanner.nextLine();
@@ -60,6 +61,7 @@ public class main {
     public static void display(){
         for (String i : customers.keySet()) {
             Customer displayCustomer = customers.get(i);
+            System.out.println();
             System.out.println("Tên Khách: " + displayCustomer.getName());
             System.out.println("Email: " + displayCustomer.getEmail());
             System.out.println("Số Điện Thoại: " + displayCustomer.getPhone());
@@ -72,6 +74,7 @@ public class main {
         String findName = scanner.nextLine();
         if (customers.containsKey(findName)) {
             Customer findCustomer = customers.get(findName);
+            System.out.println();
             System.out.println("Tên Khách: " + findCustomer.getName());
             System.out.println("Email: " + findCustomer.getEmail());
             System.out.println("Số Điện Thoại: " + findCustomer.getPhone());
