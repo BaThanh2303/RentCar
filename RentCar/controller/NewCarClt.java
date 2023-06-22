@@ -148,7 +148,7 @@ public class NewCarClt implements Initializable {
 
     public void SignOut(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/signin.fxml"));
-        Main.mainStage.setScene(new Scene(root, 1235,475));
+        Main.mainStage.setScene(new Scene(root, 366, 503));
     }
 }
 

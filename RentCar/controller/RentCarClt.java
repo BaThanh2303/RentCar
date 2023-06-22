@@ -70,7 +70,7 @@ public class RentCarClt implements Initializable {
         }
     }
 
-    public void Submit(ActionEvent actionEvent) {
+    public void Submit(ActionEvent actionEvent) throws Exception {
         try {
             String cusName = namecus.getText();
             String cusTel = telcus.getText();
@@ -80,9 +80,14 @@ public class RentCarClt implements Initializable {
             Date date = Date.valueOf(dateReturn.getValue());
             String license = rentCarLicense.getSelectionModel().getSelectedItem().toString();
             Customers cus = new Customers(cusName, cusTel, brand, model, license, date, price);
-            if (CusRepository.getInstance().create(cus)) {
+            if (namecus.getText().isEmpty() || telcus.getText().isEmpty()){
+                throw new Exception("Hãy Điền Thông Tin Khách Hàng!!");
+            }else if (CusRepository.getInstance().create(cus)) {
+                RentCar(null);
                 throw new Exception("Đã Thêm Khách Thuê Thành Công!!!");
-            }else {
+            } else if(cus == null) {
+                throw new Exception("Hãy Điền Vào Chỗ Còn Trống!!");
+            } else {
                 throw new Exception("Đã Có Lỗi Xảy Ra!");
             }
         } catch (Exception e) {
@@ -90,6 +95,7 @@ public class RentCarClt implements Initializable {
             alert.setContentText(e.getMessage());
             alert.show();
         }
+
     }
 
     public void Home(ActionEvent actionEvent) throws Exception {
@@ -139,6 +145,6 @@ public class RentCarClt implements Initializable {
 
     public void SignOut(ActionEvent event) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("fxml/signin.fxml"));
-        Main.mainStage.setScene(new Scene(root, 1235,475));
+        Main.mainStage.setScene(new Scene(root, 366, 503));
     }
 }
