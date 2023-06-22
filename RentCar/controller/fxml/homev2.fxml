@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1285.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.controller.HomeClt">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1285.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.controller.HomeClt">
    <children>
-      <TableView fx:id="tbViewHome" layoutX="194.0" layoutY="166.0" prefHeight="296.0" prefWidth="1072.0">
+      <TableView fx:id="tbViewHome" layoutX="194.0" layoutY="189.0" prefHeight="273.0" prefWidth="1072.0">
         <columns>
           <TableColumn fx:id="CusId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="CusName" prefWidth="146.0" text="Khách Hàng" />
@@ -20,12 +21,6 @@
             <TableColumn fx:id="Price" prefWidth="150.0" text="Số Tiền Trả" />
         </columns>
       </TableView>
-      <Pane layoutX="194.0" layoutY="14.0" prefHeight="145.0" prefWidth="1072.0" style="-fx-background-color: CCCCCC; -fx-background-radius: 5;">
-         <children>
-            <TextField layoutX="14.0" layoutY="14.0" promptText="Search" />
-            <Button layoutX="207.0" layoutY="14.0" mnemonicParsing="false" text="Search" />
-         </children>
-      </Pane>
       <Pane prefHeight="476.0" prefWidth="175.0" style="-fx-background-color: #CCCCCC;">
          <children>
             <Text layoutX="14.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NV1">
@@ -51,5 +46,10 @@
             <FontAwesomeIcon glyphName="CHECK" layoutX="15.0" layoutY="289.0" size="2em" />
          </children>
       </Pane>
+      <ImageView fitHeight="155.0" fitWidth="714.0" layoutX="416.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imglogo.jpg" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

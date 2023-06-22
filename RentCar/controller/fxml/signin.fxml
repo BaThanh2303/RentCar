@@ -7,16 +7,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 
-<Pane fx:controller="RentCar.controller.SigninClt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="366.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="359.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.controller.SigninClt">
    <children>
-      <Text layoutX="122.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
+      <Text layoutX="95.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In ">
          <font>
-            <Font size="37.0" />
+            <Font size="13.0" />
          </font>
       </Text>
-      <TextField fx:id="username" layoutX="85.0" layoutY="210.0" promptText="User" style="-fx-background-radius: 10;" />
-      <PasswordField fx:id="password" layoutX="85.0" layoutY="259.0" promptText="Password" style="-fx-background-radius: 10;" />
-      <Button onAction="#Submit" layoutX="85.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: #555555;" text="Log In" textFill="WHITE" />
-      <FontAwesomeIcon glyphName="USER" layoutX="154.0" layoutY="122.0" size="5em" />
+      <TextField fx:id="username" layoutX="86.0" layoutY="221.0" promptText="User" style="-fx-background-radius: 10;" />
+      <PasswordField fx:id="password" layoutX="86.0" layoutY="263.0" promptText="Password" style="-fx-background-radius: 10;" />
+      <Button layoutX="86.0" layoutY="315.0" mnemonicParsing="false" onAction="#Submit" style="-fx-background-color: #555555;" text="Log In" textFill="WHITE" />
+      <ImageView fitHeight="52.0" fitWidth="242.0" layoutX="86.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imglogo.jpg" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
