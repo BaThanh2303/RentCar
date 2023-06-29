@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static RentCar.controller.RentCarClt.*;
 
@@ -22,60 +23,6 @@ public class CarRepository implements SRepository<Car> {
         }
         return instance;
     }
-    public static ArrayList<String> getlistLicense(){
-        ArrayList<String> ListLicense = new ArrayList<>();
-        try {
-            Connection conn = Connector.getInstance().getConn();
-            Statement stt = conn.createStatement();
-            String sql = "select license, model from car where model = '"+ ModelChooce+"' ";
-            ResultSet rs = stt.executeQuery(sql);
-            while (rs.next()){
-                String license  = rs.getString("license");
-                ListLicense.add(license);
-            }
-        }catch (Exception e) {
-            System.out.println("error" + e.getMessage());
-        }
-        return ListLicense;
-    }
-
-    public static ArrayList<String> getlistModel() {
-
-        ArrayList<String> listModel = new ArrayList<>();
-        try {
-            Connection conn = Connector.getInstance().getConn();
-            Statement stt = conn.createStatement();
-            String sql = "select * from car where brand = '"+ RentCarClt.BrandChooce+"' ";
-            ResultSet rs = stt.executeQuery(sql);
-            while (rs.next()){
-                String model  = rs.getString("model");
-                listModel.add(model);
-            }
-        }catch (Exception e) {
-            System.out.println("error" + e.getMessage());
-        }
-        return listModel;
-    }
-
-
-    public static ArrayList<String> getListBrand() {
-        ArrayList<String> list = new ArrayList<>();
-        try {
-            Connection conn = Connector.getInstance().getConn();
-            Statement stt = conn.createStatement();
-            String sql = "select * from car where status = 'Available' ";
-            ResultSet rs = stt.executeQuery(sql);
-            while (rs.next()){
-                String brand  = rs.getString("brand");
-                list.add(brand);
-            }
-
-
-        }catch (Exception e) {
-            System.out.println("error" + e.getMessage());
-        }
-        return list;
-    }
 
     @Override
     public ArrayList<Car> getAll() {
@@ -83,7 +30,7 @@ public class CarRepository implements SRepository<Car> {
         try {
             Connection conn = Connector.getInstance().getConn();
             Statement stt = conn.createStatement();
-            String sql = "select * from car";
+            String sql = "select * from car where status = 'Available'" ;
             ResultSet rs = stt.executeQuery(sql);
 
             while (rs.next()) {
@@ -103,21 +50,49 @@ public class CarRepository implements SRepository<Car> {
 
     }
 
+    @Override
+    public Boolean create(Car car) {
+        return null;
+    }
+
+    @Override
+    public Boolean update(Car c) {
+        try {
+            Connection conn = Connector.getInstance().getConn();
+            String sql = "update car set status=? where carid=?";
+            PreparedStatement stt = conn.prepareStatement(sql);
+            stt.setString(1,c.getStatus());
+            stt.setInt(2,c.getCarid());
+            stt.executeUpdate();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean delete(Car car) {
+        return null;
+    }
+
 
     public static int countRentDate() {
         int date = 0;
         try {
                 if (returndate.isAfter(rentdate)) {
-                    date = returndate.compareTo(rentdate);
-                    if (date == 0){
+                    date = returndate.getDayOfYear() - rentdate.getDayOfYear();
+                    if (date == 0) {
                         date++;
                         return date;
                     }
                     return date;
-                }else {
-                    throw new Exception("Ngày Trả Phải Sau Ngày Thuê!!!");
-
                 }
+                    else {
+                        throw new Exception("Ngày Trả Phải Sau Ngày Thuê!!!");
+                    }
+
+
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -132,7 +107,7 @@ public class CarRepository implements SRepository<Car> {
         double totalprice = 0;
         try {
             Connection conn = Connector.getInstance().getConn();
-            String sql = "select price, model from car where model = '"+ ModelChooce+"' ";
+            String sql = "select price, model from car where model = '"+ ModelSelect+"' ";
             PreparedStatement stt = conn.prepareStatement(sql);
             ResultSet rs = stt.executeQuery(sql);
             double price = 0;
@@ -145,63 +120,6 @@ public class CarRepository implements SRepository<Car> {
         }
         return totalprice;
     }
-
-    @Override
-    public Boolean create(Car c) {
-        try {
-            Connection conn = Connector.getInstance().getConn();
-            String sql = "insert into car(brand,model,license,price,status) values(?,?,?,?,?)";
-            PreparedStatement stt = conn.prepareStatement(sql);
-            stt.setString(1,c.getBrand());
-            stt.setString(2,c.getModel());
-            stt.setString(3,c.getLicense());
-            stt.setDouble(4,c.getPrice());
-            stt.setString(5,c.getStatus());
-            stt.executeUpdate();
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return false;
-    }
-
-    @Override
-    public Boolean update(Car c) {
-        try {
-            Connection conn = Connector.getInstance().getConn();
-            String sql = "update car set brand=?,model=?,License=?,price=?,status=? where carid=?";
-            PreparedStatement stt = conn.prepareStatement(sql);
-            stt.setString(1,c.getBrand());
-            stt.setString(2,c.getModel());
-            stt.setString(3,c.getLicense());
-            stt.setDouble(4,c.getPrice());
-            stt.setString(5,c.getStatus());
-            stt.setInt(6,c.getCarid());
-            stt.executeUpdate();
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return false;
-    }
-
-    @Override
-    public Boolean delete(Car c) {
-        try {
-            Connection conn = Connector.getInstance().getConn();
-            String sql = "delete from car where carid=?";
-            PreparedStatement stt = conn.prepareStatement(sql);
-            stt.setInt(1,c.getCarid());
-            stt.executeUpdate();
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return false;
-    }
-
-
-
 
     @Override
     public Car find(String brand) {

@@ -1,0 +1,9 @@
+trả xe - local date ngày trả, tính tiền thuê, mục tình trạng xe + bình thường hay tai nạn 
++ note + giá tiền bồi thường.
+khóa xe - chuyển avaible 
+xóa tất cả thông tin về xe
+ngày thuê là ngày thao tác thuê
+Thuê xe-đồng ý thuê.
+
+sửa- xóa combobox thành text field + action click
+-data base 

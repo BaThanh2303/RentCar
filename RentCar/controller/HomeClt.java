@@ -1,8 +1,9 @@
 package RentCar.controller;
 
 import RentCar.Main;
-import RentCar.entity.Customers;
-import RentCar.repository.CusRepository;
+import RentCar.entity.RentCar;
+import RentCar.repository.HomeRepository;
+import RentCar.repository.RentCarRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,28 +21,28 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class HomeClt implements Initializable {
-    public TableView<Customers> tbViewHome;
-    public TableColumn<Customers, Integer> CusId;
-    public TableColumn<Customers, String> CusName;
-    public TableColumn<Customers, String> CusTel;
-    public TableColumn<Customers, String> Brand;
-    public TableColumn<Customers, String> Model;
-    public  TableColumn<Customers, String> License;
-    public TableColumn<Customers, Date> DateReturned;
-    public TableColumn<Customers, Double> Price;
+    public TableView<RentCar> tbViewHome;
+    public TableColumn<RentCar, String> CusName;
+    public TableColumn<RentCar, String> CusTel;
+    public TableColumn<RentCar, String> Brand;
+    public TableColumn<RentCar, String> Model;
+    public  TableColumn<RentCar, String> License;
+    public TableColumn<RentCar, Date> dateReturn;
+    public TableColumn<RentCar, Date> dateRent;
+    public TableColumn<RentCar, Double> price;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CusId.setCellValueFactory(new PropertyValueFactory<>("CusId"));
-        CusName.setCellValueFactory(new PropertyValueFactory<>("CusName"));
-        CusTel.setCellValueFactory(new PropertyValueFactory<>("CusTel"));
-        Brand.setCellValueFactory(new PropertyValueFactory<>("Brand"));
-        Model.setCellValueFactory(new PropertyValueFactory<>("Model"));
-        License.setCellValueFactory(new PropertyValueFactory<>("License"));
-        DateReturned.setCellValueFactory(new PropertyValueFactory<>("DateReturned"));
-        Price.setCellValueFactory(new PropertyValueFactory<>("Price"));
+        CusName.setCellValueFactory(new PropertyValueFactory<>("cusname"));
+        CusTel.setCellValueFactory(new PropertyValueFactory<>("custel"));
+        Brand.setCellValueFactory(new PropertyValueFactory<>("carBrand"));
+        Model.setCellValueFactory(new PropertyValueFactory<>("carModel"));
+        License.setCellValueFactory(new PropertyValueFactory<>("carLicense"));
+        dateRent.setCellValueFactory(new PropertyValueFactory<>("rentDate"));
+        dateReturn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+        price.setCellValueFactory(new PropertyValueFactory<>("Price"));
         try {
-            ObservableList<Customers> listCus = FXCollections.observableArrayList();
-            listCus.addAll(CusRepository.getInstance().getAll());
+            ObservableList<RentCar> listCus = FXCollections.observableArrayList();
+            listCus.addAll(HomeRepository.getInstance().getAll());
             tbViewHome.setItems(listCus);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -55,8 +56,8 @@ public class HomeClt implements Initializable {
         Main.mainStage.setScene(new Scene(root, 1235,475));
     }
 
-    public void NewCar(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/newcar.fxml"));
+    public void ReturnCar(ActionEvent actionEvent) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/carreturn.fxml"));
         Main.mainStage.setScene(new Scene(root, 1235,475));
     }
 

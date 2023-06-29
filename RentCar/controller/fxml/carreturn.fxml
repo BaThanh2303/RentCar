@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1235.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.controller.ReturnCarClt">
+   <children>
+      <TableView fx:id="tbView" layoutX="193.0" layoutY="230.0" onMouseClicked="#Click" prefHeight="231.0" prefWidth="1028.0">
+         <columns>
+            <TableColumn fx:id="ID" prefWidth="66.0" text="ID" />
+            <TableColumn fx:id="TCModel" prefWidth="136.0" text="Tên Xe" />
+            <TableColumn fx:id="TCLicense" prefWidth="138.0" text="Biển Số" />
+            <TableColumn fx:id="TCPrice" prefWidth="140.0" text="Giá" />
+            <TableColumn fx:id="TCCusName" prefWidth="165.0" text="Khách Hàng" />
+            <TableColumn fx:id="TCCusTel" prefWidth="128.0" text="Số Điện Thoại" />
+            <TableColumn fx:id="TCRentDate" maxWidth="254.0" prefWidth="129.0" text="Ngày Thuê" />
+            <TableColumn fx:id="TCReturntDate" maxWidth="254.0" prefWidth="125.0" text="Ngày Trả" />
+         </columns>
+      </TableView>
+      <Pane layoutX="193.0" layoutY="14.0" prefHeight="203.0" prefWidth="1028.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 5;">
+         <children>
+            <TextField id="model" fx:id="Model" disable="true" layoutX="82.0" layoutY="17.0" prefHeight="30.0" prefWidth="175.0" />
+            <Text layoutX="21.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên Xe: " />
+            <TextField fx:id="License" disable="true" layoutX="82.0" layoutY="59.0" prefHeight="31.0" prefWidth="175.0" />
+            <Text layoutX="17.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biển Số: " />
+            <Text layoutX="14.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá Thuê:" />
+            <TextField id="price" fx:id="Price" disable="true" layoutX="82.0" layoutY="100.0" prefHeight="31.0" prefWidth="175.0" />
+            <TextArea fx:id="detail" layoutX="817.0" layoutY="22.0" prefHeight="148.0" prefWidth="186.0" visible="false" />
+            <TextField fx:id="cusName" disable="true" layoutX="363.0" layoutY="21.0" />
+            <TextField fx:id="cusTel" disable="true" layoutX="363.0" layoutY="58.0" />
+            <ComboBox fx:id="Status" disable="true" layoutX="363.0" layoutY="100.0" onAction="#SelectStatus" prefHeight="31.0" prefWidth="186.0" promptText="Chọn Tình Trạng Xe" />
+            <Text layoutX="275.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Khách Hàng" />
+            <Text layoutX="292.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
+            <Text layoutX="280.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tình Trạng" />
+            <Text fx:id="detailText" layoutX="885.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi Tiết" visible="false" />
+            <Button fx:id="submit" disable="true" layoutX="577.0" layoutY="21.0" mnemonicParsing="false" onAction="#Submit" prefHeight="31.0" prefWidth="83.0" text="Cập Nhật" />
+            <Text layoutX="55.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiền Thuê:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="55.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiền Hư Hỏng:" />
+            <Text fx:id="failuretotal" layoutX="158.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text layoutX="363.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng Tiền:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="finaltotal" layoutX="363.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <ComboBox fx:id="failureSelect" layoutX="690.0" layoutY="21.0" onAction="#failure" prefHeight="31.0" prefWidth="127.0" promptText="Hỏng Hóc" visible="false" />
+            <Text fx:id="total" layoutX="158.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="clear" layoutX="690.0" layoutY="57.0" mnemonicParsing="false" onAction="#clear" prefHeight="31.0" prefWidth="127.0" text="Clear" visible="false" />
+         </children>
+      </Pane>
+      <Pane prefHeight="476.0" prefWidth="175.0" style="-fx-background-color: #CCCCCC;">
+         <children>
+            <Text layoutX="14.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NV1">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân viên" />
+            <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
+            <Button layoutY="197.0" mnemonicParsing="false" onAction="#Home" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
+            <Button layoutY="256.0" mnemonicParsing="false" onAction="#RentCar" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
+            <Button layoutY="314.0" mnemonicParsing="false" onAction="#ReturnCar" prefHeight="45.0" prefWidth="175.0" text="Trả Xe" />
+            <Button layoutX="17.0" layoutY="424.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="31.0" prefWidth="83.0" text="SignOut">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon glyphName="SIGN_OUT" />
+               </graphic>
+            </Button>
+            <FontAwesomeIcon glyphName="HOME" layoutX="17.0" layoutY="230.0" size="2em" wrappingWidth="13.928571701049805" />
+            <FontAwesomeIcon glyphName="CAR" layoutX="13.0" layoutY="290.0" size="2em" text="" />
+            <FontAwesomeIcon glyphName="CHECK" layoutX="16.0" layoutY="347.0" size="2em" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

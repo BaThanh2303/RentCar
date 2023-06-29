@@ -7,20 +7,25 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1285.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.controller.HomeClt">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="1285.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RentCar.controller.HomeClt">
    <children>
-      <TableView fx:id="tbViewHome" layoutX="194.0" layoutY="189.0" prefHeight="273.0" prefWidth="1072.0">
+      <TableView fx:id="tbViewHome" layoutX="194.0" layoutY="212.0" prefHeight="250.0" prefWidth="1072.0">
         <columns>
-          <TableColumn fx:id="CusId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="CusName" prefWidth="146.0" text="Khách Hàng" />
-            <TableColumn fx:id="CusTel" prefWidth="166.0" text="Số Điện Thoại" />
-            <TableColumn fx:id="Brand" prefWidth="126.0" text="Hãng" />
-            <TableColumn fx:id="Model" prefWidth="134.0" text="Tên Xe" />
-            <TableColumn fx:id="License" prefWidth="127.0" text="Biển Số" />
-            <TableColumn fx:id="DateReturned" prefWidth="150.0" text="Ngày Trả" />
-            <TableColumn fx:id="Price" prefWidth="150.0" text="Số Tiền Trả" />
+          <TableColumn fx:id="CusName" prefWidth="159.0" text="Khách Hàng" />
+            <TableColumn fx:id="CusTel" prefWidth="139.0" text="Số Điện Thoại" />
+            <TableColumn fx:id="Brand" prefWidth="119.0" text="Hãng" />
+            <TableColumn fx:id="Model" prefWidth="124.0" text="Tên Xe" />
+            <TableColumn fx:id="License" prefWidth="119.0" text="Biển Số" />
+            <TableColumn fx:id="dateRent" prefWidth="128.0" text="Ngày Thuê" />
+            <TableColumn fx:id="dateReturn" prefWidth="133.0" text="Ngày Trả" />
+            <TableColumn fx:id="price" prefWidth="150.0" text="Số Tiền Trả " />
         </columns>
       </TableView>
+      <ImageView fitHeight="155.0" fitWidth="714.0" layoutX="416.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imglogo.jpg" />
+         </image>
+      </ImageView>
       <Pane prefHeight="476.0" prefWidth="175.0" style="-fx-background-color: #CCCCCC;">
          <children>
             <Text layoutX="14.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NV1">
@@ -32,7 +37,7 @@
             <FontAwesomeIcon glyphName="USER" layoutX="52.0" layoutY="106.0" size="5em" />
             <Button layoutY="197.0" mnemonicParsing="false" onAction="#Home" prefHeight="45.0" prefWidth="175.0" text="Trang Chủ" />
             <Button layoutY="256.0" mnemonicParsing="false" onAction="#RentCar" prefHeight="45.0" prefWidth="175.0" text="Thuê Xe" />
-            <Button layoutY="314.0" mnemonicParsing="false" onAction="#NewCar" prefHeight="45.0" prefWidth="175.0" text="Thêm Xe" />
+            <Button layoutY="314.0" mnemonicParsing="false" onAction="#ReturnCar" prefHeight="45.0" prefWidth="175.0" text="Trả Xe" />
             <Button layoutX="17.0" layoutY="424.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="31.0" prefWidth="83.0" text="SignOut">
                <font>
                   <Font size="11.0" />
@@ -42,14 +47,14 @@
                </graphic>
             </Button>
             <FontAwesomeIcon glyphName="HOME" layoutX="17.0" layoutY="230.0" size="2em" wrappingWidth="13.928571701049805" />
-            <FontAwesomeIcon glyphName="CAR" layoutX="13.0" layoutY="347.0" size="2em" />
-            <FontAwesomeIcon glyphName="CHECK" layoutX="15.0" layoutY="289.0" size="2em" />
+            <FontAwesomeIcon glyphName="CAR" layoutX="13.0" layoutY="290.0" size="2em" text="" />
+            <FontAwesomeIcon glyphName="CHECK" layoutX="16.0" layoutY="347.0" size="2em" />
          </children>
       </Pane>
-      <ImageView fitHeight="155.0" fitWidth="714.0" layoutX="416.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/imglogo.jpg" />
-         </image>
-      </ImageView>
+      <Text layoutX="632.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lịch Sử Thuê Xe">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
